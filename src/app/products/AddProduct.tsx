@@ -1,8 +1,26 @@
 'use client'
-import { useState } from "react"
+import { SyntheticEvent, useState } from "react"
 
 export default function AddProduct () {
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState("");
     const [modal, setModal] = useState(false);
+
+    async function handleSubmit(e : SyntheticEvent ) {
+        e.preventDefault();
+        await fetch('http://localhost:5000/product', {
+           method: 'POST',
+           headers: {
+                'Content-Type': 'application/json'
+           },
+           body: JSON.stringify ({
+                title: title,
+                price: price,
+           })
+        }); 
+        setTitle("");
+        setPrice("");
+    }
 
     function handleChange() {
         setModal(!modal);
@@ -17,14 +35,14 @@ export default function AddProduct () {
             <div className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Add New Product</h3>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="form-control">
                             <label className="label font-bold">Title</label>
-                            <input type="text" className="input w-full input-bordered" placeholder="Product Name" />
+                            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="input w-full input-bordered" placeholder="Product Name" />
                         </div>
                         <div className="form-control">
                             <label className="label font-bold">Price</label>
-                            <input type="text" className="input w-full input-bordered" placeholder="Price" />
+                            <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} className="input w-full input-bordered" placeholder="Price" />
                         </div>
                         <div className="modal-action">
                             <button type="button" className="btn" onClick={handleChange}>Close</button>
