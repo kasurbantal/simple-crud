@@ -1,6 +1,6 @@
-import AddProduct from "./AddProduct";
-import DeleteProduct from "./DeleteProduct";
-import UpdateProduct from "./UpdateProduct";
+import AddProduct from "./components/AddProduct";
+import DeleteProduct from "./components/DeleteProduct";
+import UpdateProduct from "./components/UpdateProduct";
 
 type Product = {
     id: number;

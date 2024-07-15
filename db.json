@@ -12,13 +12,18 @@
     },
     {
       "id": "3",
-      "title": "Product 3 Update",
+      "title": "Product 3 Updated",
       "price": 919
     },
     {
       "id": "6e7b",
       "title": "Product 5",
       "price": "565"
+    },
+    {
+      "id": "4ebf",
+      "title": "Product 6 Updated",
+      "price": 424
     }
   ]
 }
